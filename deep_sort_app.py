@@ -12,6 +12,9 @@ from application_util import visualization
 from deep_sort import nn_matching
 from deep_sort.detection import Detection
 from deep_sort.tracker import Tracker
+import warnings
+
+warnings.filterwarnings('ignore')
 
 
 def gather_sequence_info(sequence_dir, detection_file):
@@ -177,7 +180,7 @@ def run(sequence_dir, detection_file, output_file, min_confidence,
         indices = preprocessing.non_max_suppression(
             boxes, nms_max_overlap, scores)
         detections = [detections[i] for i in indices]
-
+        print(detections[0].tlwh, detections[0].confidence, detections[0].feature.shape)
         # Update tracker.
         tracker.predict()
         tracker.update(detections)
@@ -200,7 +203,7 @@ def run(sequence_dir, detection_file, output_file, min_confidence,
 
     # Run tracker.
     if display:
-        visualizer = visualization.Visualization(seq_info, update_ms=5)
+        visualizer = visualization.Visualization(seq_info, update_ms=100)
     else:
         visualizer = visualization.NoVisualization(seq_info)
     visualizer.run(frame_callback)
