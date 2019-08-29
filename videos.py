@@ -18,9 +18,6 @@ from bbox.contrib.detection.darknet import DarknetObjectDetector
 width = 0
 height = 0
 
-model_path = sys.argv[1]
-vid_path = sys.argv[2]
-out_path = sys.argv[3]
 warnings.filterwarnings('ignore')
 
 def get_darknet_options(model_path):
