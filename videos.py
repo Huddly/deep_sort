@@ -15,6 +15,7 @@ from bbox.contrib.detection.darknet import DarknetObjectDetector
     
 model_path = sys.argv[1]
 vid_path = sys.argv[2]
+out_path = sys.argv[3]
 warnings.filterwarnings('ignore')
 
 cfg = list(Path(model_path).glob('*.cfg'))
