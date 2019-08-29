@@ -119,6 +119,6 @@ with DarknetObjectDetector(Path(dn_path).parents[0] / 'darknet',
     
     container.summary()
     container_tracks.summary()
-    container.write_json('/home/anders/huddly/projects/autozoom/scoring/scoring-output/' + vid_path.split('/')[-1] + '.json')
-    container_tracks.write_json('/home/anders/huddly/projects/autozoom/scoring/scoring-output/' + vid_path.split('/')[-1] + '_tracks.json')
+    container.write_json(os.path.join(out_path, vid_path.split('/')[-1], '.json'))
+    container_tracks.write_json(os.path.join(out_path, vid_path.split('/')[-1], '_tracks.json'))
     print('wrote container to /home/anders/huddly/projects/autozoom/scoring/scoring-output/' + vid_path.split('/')[-1] + '.json')
