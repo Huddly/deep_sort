@@ -67,7 +67,7 @@ def min_cost_matching(
     for row, col in indices:
         track_idx = track_indices[row]
         detection_idx = detection_indices[col]
-        if cost_matrix[row, col] > max_distance:
+        if cost_matrix[row, col] > max_distance or tracks[track_idx].detection.label != detections[detection_idx].label:
             unmatched_tracks.append(track_idx)
             unmatched_detections.append(detection_idx)
         else:
